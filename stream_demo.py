@@ -17,7 +17,7 @@ if uploaded_file is not None:
     st.write("")
     label, _, probs = inferer.predict(image)
     if probs.max().item() > 0.7:
-        output.text("I am guessing this is a {label[0]} with a probability of: {probs.max().item() * 100:.04f}%")
+        output.text(f"I am guessing this is a {label[0]} with a probability of: {probs.max().item() * 100:.04f}%")
     else:
         output.text("Excuse me I am not sure what this is")
     
