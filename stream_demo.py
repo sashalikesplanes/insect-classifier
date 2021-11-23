@@ -1,7 +1,5 @@
 import streamlit as st
-from fastai.vision.widgets import *
-import os
-from fastbook import *
+from fastbook import load_learner, PILImage
 
 
 def return_list(x): return [x] #need to add this custom function from learner
