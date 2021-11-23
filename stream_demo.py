@@ -8,12 +8,12 @@ inferer = load_learner('multimod.pkl')
 st.title("Insect Inferer")
 st.write("A simple web app where a user may upload the picture of an insect found in their house and it is classified into one of the top 7 common insects (spiders, mosquitos, fruit flies, bed bugs, cockroaches, moths, silverfish) or informs the user that it does not know the insect.")
 
-uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "heic"])
+uploaded_file = st.file_uploader("Choose an image with an insect", type=["jpg", "jpeg", "heic"])
 output = st.empty()
 if uploaded_file is not None:
     image = PILImage.create(uploaded_file)
     output.text("Classifying...")
-    st.image(image, caption='Uploaded Image.', width=256, use_column_width=False)
+    st.image(image, caption='Your image', width=512, use_column_width=False)
     st.write("")
     label, _, probs = inferer.predict(image)
     if probs.max().item() > 0.7:
