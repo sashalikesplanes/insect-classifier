@@ -15,7 +15,7 @@ output = st.empty() # make an empty object to be used to write the text for the 
 
 if uploaded_file is not None: # once an image is uploaded run inference
     image = PILImage.create(uploaded_file)
-    with output.spinner("Classifying...")
+    with output.spinner("Classifying..."):
         st.image(image, caption='Your image', width=512, use_column_width=False)
         st.write("")
         label, _, probs = inferer.predict(image)
