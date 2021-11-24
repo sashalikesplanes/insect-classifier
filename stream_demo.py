@@ -11,18 +11,18 @@ st.write("A simple web app where a user may upload the picture of an insect foun
 
 uploaded_file = st.file_uploader("Choose an image with an insect", type=["jpg", "jpeg", "heic", "png"])
 
-#output = st.empty() # make an empty object to be used to write the text for the prediction
+output = st.empty() # make an empty object to be used to write the text for the prediction
 
 if uploaded_file is not None: # once an image is uploaded run inference
     image = PILImage.create(uploaded_file)
-    with st.spinner("Classifying..."):
+    with output.spinner("Classifying..."):
         st.image(image, caption='Your image', width=512, use_column_width=False)
         st.write("")
         label, _, probs = inferer.predict(image)
     if probs.max().item() > 0.7:
-        st.success(f"I am guessing this is a {label[0]} with a probability of: {probs.max().item() * 100:.04f}%")
+        output.success(f"I am guessing this is a {label[0]} with a probability of: {probs.max().item() * 100:.04f}%")
         st.balloons()
     else:
-        st.success("Excuse me, I am not sure what this is")
+        output.success("Excuse me, I am not sure what this is")
 
 
