@@ -23,6 +23,6 @@ if uploaded_file is not None: # once an image is uploaded run inference
         output.success(f"I am guessing this is a {label[0]} with a probability of: {probs.max().item() * 100:.04f}%")
         st.balloons()
     else:
-        output.success("Excuse me, I am not sure what this is")
+        output.error("Excuse me, I am not sure what this is")
 
 
