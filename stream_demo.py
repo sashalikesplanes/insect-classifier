@@ -4,8 +4,10 @@ from fastbook import load_learner, PILImage
 
 # load the learner and add the function needed for the learner 
 def return_list(x): return [x] #need to add this custom function from learner
-inferer = load_learner('multimod.pkl')
-
+@st.cache
+def get_inferer():
+    return load_learner('multimod.pkl')
+inferer = get_inferer()
 # setup the title and description of web app
 st.title("Insect Inferer")
 st.write("A simple web app where a user may upload the picture of an insect found in their house and it is classified into one of the top 7 common insects (spiders, mosquitos, fruit flies, bed bugs, cockroaches, moths, silverfish) or informs the user that it does not know the insect.")
